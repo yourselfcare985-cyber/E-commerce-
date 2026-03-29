@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Comment Style Layout</title>
+<title>Animated Dialogue</title>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 <style>
   /* RESET */
@@ -16,21 +16,22 @@
   body, html {
     height: 100%;
     font-family: 'Pacifico', cursive;
-    background: white;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: #e0f0ff; /* Light blue background */
+    overflow: hidden;
   }
 
-  /* Dotted background */
+  /* Dotted blue background */
   body::before {
     content: "";
     position: fixed;
     top: 0; left: 0;
     width: 100%;
     height: 100%;
-    background-image: radial-gradient(#ccc 1px, transparent 1px);
-    background-size: 20px 20px;
+    background-image: radial-gradient(#5aa0ff 1px, transparent 1px);
+    background-size: 25px 25px;
     z-index: -1;
   }
 
@@ -43,20 +44,38 @@
     width: 90%;
   }
 
+  /* Image intro animation */
   .left img {
     max-width: 250px;
     border-radius: 10px;
     object-fit: cover;
+    opacity: 0;
+    transform: translateX(-50px) scale(0.8);
+    animation: imageIntro 1s forwards;
   }
 
+  @keyframes imageIntro {
+    0% { opacity: 0; transform: translateX(-50px) scale(0.8); }
+    100% { opacity: 1; transform: translateX(0) scale(1); }
+  }
+
+  /* Dialogue animation */
   .right {
     font-size: 2rem;
-    color: #333;
+    color: #fff;
     max-width: 500px;
-    background: #f0f0f0;
+    background: #0077ff;
     padding: 20px 25px;
     border-radius: 20px;
-    box-shadow: 2px 2px 12px rgba(0,0,0,0.1);
+    box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
+    opacity: 0;
+    transform: translateX(50px) scale(0.8);
+    animation: textIntro 1s forwards 0.5s; /* delay so image shows first */
+  }
+
+  @keyframes textIntro {
+    0% { opacity: 0; transform: translateX(50px) scale(0.8); }
+    100% { opacity: 1; transform: translateX(0) scale(1); }
   }
 
   @media (max-width: 768px) {
@@ -66,6 +85,7 @@
     }
     .right {
       text-align: center;
+      animation: textIntro 1s forwards 0.5s;
     }
   }
 </style>
@@ -77,7 +97,8 @@
     <img src="IMG-20260329-WA0014-removebg-preview.png" alt="Ladka Image">
   </div>
   <div class="right">
-    "Yahan kyun aaya h , wapas ja shop now daba"
+    "Yahan kyun aagya??
+    wapas jaa shop now daba!"
   </div>
 </div>
 
