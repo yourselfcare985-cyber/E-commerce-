@@ -1,1 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KIZK STORE</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  .bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* 🔥 sabke peeche */
+  overflow: hidden;
+}
 
+.bg-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 🔥 full screen cover */
+}
+  body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4); /* dark overlay */
+  z-index: -1;
+  }
+  body::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #d4f8d4 10%, transparent 10%);
+  background-size: 40px 40px;
+  z-index: -1;
+  opacity: 0.4;
+  }
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #FFFFFF;
+  color: white;
+  animation: fadeIn 1s ease-in;
+}
+header {
+  font-family: Brisk-script, sans-serif;
+  background: black;
+  padding: 15px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.search-box {
+  margin: 20px;
+  text-align: center;
+}
+
+.search-box input {
+  width: 70%;
+  padding: 12px;
+  border-radius: 25px;
+
+  border: 2px solid black;   /* 🔥 BLACK BORDER */
+  outline: none;
+
+  font-size: 16px;
+}
+
+/* focus pe aur sharp lage */
+.search-box input:focus {
+  border: 2px solid black;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+/* menu container */
+.menu-container {
+  position: absolute;
+  left: 15px;
+}
+
+/* button */
+.menu-btn {
+  font-size: 25px;
+  cursor: pointer;
+}
+.menu-btn {
+  position: absolute;
+  left: 15px;
+  font-size: 25px;
+  cursor: pointer;
+  z-index: 1000;  /* 🔥 IMPORTANT */
+}
+/* dropdown */
+.dropdown {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  display: none;
+  min-width: 150px;
+}
+
+/* links */
+.dropdown a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown a:hover {
+  background: #f1f1f1;
+}
+
+/* show */
+.dropdown.active {
+  display: block;
+}
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* PRODUCT CARD */
+.product {
+  background: #1c1c1c;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  padding: 10px;
+
+  opacity: 0;
+  transform: translateY(20px);
+  animation: show 0.5s forwards;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* IMAGE FIX */
+.product img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.product:hover img {
+  transform: scale(1.1);
+}
+
+.product h3 {
+  margin: 10px 0 5px;
+}
+
+.product p {
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+/* BUTTON */
+button {
+  padding: 10px 15px;
+  background: white;
+  color: black;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: #ff4d4d;
+  color: white;
+  transform: scale(1.05);
+}
+.cart {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+#cart-count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  padding: 3px 7px;
+  border-radius: 50%;
+}
+/* CART */
+.cart {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: black;
+  padding: 10px;
+  border-radius: 5px;
+}
+.video-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9;   /* 🔥 FIXED RATIO */
+  overflow: hidden;      /* 🔥 IMPORTANT */
+  border-radius: 10px;
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* 🔥 KEEP INSIDE */
+  display: block;
+}
+/* smooth entry animation */
+.product {
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  animation: smoothShow 0.6s forwards;
+}
+
+@keyframes smoothShow {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+/* ANIMATIONS */
+@keyframes show {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes bounce {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.3); }
+  60% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+.bounce {
+  animation: bounce 0.4s;
+}
+</style>
+</head>
+
+<body>
+  <!-- in index.html -->
+<a href="intro.html">Go to About Page</a>
+  <div class="bg-video">
+  <video autoplay muted loop playsinline>
+    <source src="45608422d541cb179a39849c18c75491_720w.mp4" type="video/mp4">
+  </video>
+  </div>
+<header>
+  <div class="menu-container">
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+    <div class="dropdown" id="dropdown">
+      <a href="#">Home</a>
+      <a href="#">Search</a>
+    </div>
+  </div>
+
+  KIZK STORE
+</header>
+<div class="cart">
+  <i class="fa-solid fa-cart-shopping"></i>
+  <span id="cart-count">0</span>
+</div>
+<div class="cart">
+  🛒
+  <span id="cart-count">0</span>
+</div>
+
+<div class="search-box">
+  <input type="text" id="search" placeholder="Search products..." onkeyup="searchProduct()">
+</div>
+
+<div class="products" id="product-list"></div>
+
+<script>
+let products = [
+  {
+    name: "Headphones",
+    price: 999,
+    video: "VID-20260329-WA0012.mp4"
+  },
+  {
+    name: "Watch",
+    price: 2999,
+    video: "VID-20260329-WA0009.mp4"
+  },
+  {
+    name: "Shoes",
+    price: 1499,
+    video: "Book_20260329_122604_0000.mp4"
+  }
+];
+
+let cart = 0;
+  
+function toggleMenu() {
+  document.getElementById("dropdown").classList.toggle("active");
+}
+function displayProducts(list) {
+  let container = document.getElementById("product-list");
+  container.innerHTML = "";
+
+  list.forEach((product, index) => {
+
+    let media = "";
+
+    if (product.video) {
+      media = `
+        <div class="video-wrapper">
+          <video autoplay muted loop playsinline>
+            <source src="${product.video}" type="video/mp4">
+          </video>
+        </div>
+      `;
+    } else {
+      media = `<img src="${product.image}">`;
+    }
+
+    container.innerHTML += `
+      <div class="product" style="animation-delay:${index * 0.15}s">
+        ${media}
+        <h3>${product.name}</h3>
+        <p>₹${product.price}</p>
+        <button onclick="addToCart()">Add to Cart</button>
+      </div>
+    `;
+  });
+}
+
+function addToCart() {
+  cart++;
+  let cartElement = document.getElementById("cart-count");
+  cartElement.innerText = cart;
+
+  cartElement.classList.add("bounce");
+
+  setTimeout(() => {
+    cartElement.classList.remove("bounce");
+  }, 400);
+}
+
+function searchProduct() {
+  let value = document.getElementById("search").value.toLowerCase();
+
+  let filtered = products.filter(p =>
+    p.name.toLowerCase().includes(value)
+  );
+
+  displayProducts(filtered);
+}
+
+displayProducts(products);
+</script>
+
+</body>
+</html>
