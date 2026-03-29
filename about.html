@@ -96,34 +96,6 @@ header {
   cursor: pointer;
   z-index: 1000;  /* 🔥 IMPORTANT */
 }
-/* dropdown */
-.dropdown {
-  position: absolute;
-  top: 40px;
-  left: 0;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  display: none;
-  min-width: 150px;
-}
-
-/* links */
-.dropdown a {
-  display: block;
-  padding: 10px;
-  text-decoration: none;
-  color: black;
-}
-
-.dropdown a:hover {
-  background: #f1f1f1;
-}
-
-/* show */
-.dropdown.active {
-  display: block;
-}
 .products {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -189,29 +161,6 @@ button:hover {
   color: white;
   transform: scale(1.05);
 }
-.cart {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  background: black;
-  color: white;
-  padding: 10px 15px;
-  border-radius: 5px;
-  font-size: 22px;
-  cursor: pointer;
-  z-index: 1000;
-}
-
-#cart-count {
-  position: absolute;
-  top: -8px;
-  right: -10px;
-  background: red;
-  color: white;
-  font-size: 12px;
-  padding: 3px 7px;
-  border-radius: 50%;
-}
 .video-wrapper {
   width: 100%;
   aspect-ratio: 16 / 9;   /* 🔥 FIXED RATIO */
@@ -271,14 +220,13 @@ button:hover {
   </video>
   </div>
 <header>
-  <div class="menu-container">
-    <div class="menu-btn" onclick="toggleMenu()">☰</div>
-
-    <div class="dropdown" id="dropdown">
-      <a href="#">Home</a>
-      <a href="#">Search</a>
-    </div>
+ <div class="menu-container">
+  <div class="menu-btn" onclick="toggleMenu('main-menu')">☰</div>
+  <div class="dropdown" id="main-menu">
+    <a href="index.html">Home</a>
+    <a href="index.html">Sign In / Log In</a>
   </div>
+</div>
 
   KIZK STORE
 </header>
@@ -334,19 +282,6 @@ button:hover {
   border-radius: 50%;
 }
 
-/* Menu / Login Dropdown */
-.menu-container {
-  position: relative;
-}
-
-.menu-btn {
-  font-size: 22px;
-  cursor: pointer;
-  background: white;
-  padding: 6px 10px;
-  border-radius: 5px;
-}
-
 .dropdown {
   position: absolute;
   top: 35px;
@@ -355,7 +290,7 @@ button:hover {
   border-radius: 5px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   display: none;
-  min-width: 150px;
+  min-width: 120px;
 }
 
 .dropdown a {
@@ -398,21 +333,7 @@ button:hover {
   transform: scale(1.1);
   background: darkgreen;
 }
-</style>
-
-<script>
-// Toggle dropdown
-function toggleMenu() {
-  document.getElementById("dropdown-menu").classList.toggle("active");
-}
-</script>
-<!-- CALL BUTTON -->
-<a href="call.html" class="call-btn">☎️</a>
-
-<style>
-
-/* Login Button */
-.login-btn {
+  .login-btn {
   background: white;
   color: black;
   padding: 8px 12px;
@@ -428,6 +349,9 @@ function toggleMenu() {
   transform: scale(1.05);
 }
 </style>
+<!-- CALL BUTTON -->
+<a href="call.html" class="call-btn">☎️</a>
+  
 <div class="search-box">
   <input type="text" id="search" placeholder="Search products..." onkeyup="searchProduct()">
 </div>
@@ -457,6 +381,9 @@ let cart = 0;
   
 function toggleMenu() {
   document.getElementById("dropdown").classList.toggle("active");
+}
+function toggleMenu(id) {
+  document.getElementById(id).classList.toggle("active");
 }
 function displayProducts(list) {
   let container = document.getElementById("product-list");
