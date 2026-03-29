@@ -5,9 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KIZK</title>
 
-<link rel="stylesheet" href="style.css">
-  /* RESET */
-  <style>
+<style>
+/* RESET */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -23,21 +22,12 @@ body {
   justify-content: space-between;
   padding: 20px;
   z-index: 10;
-}
-.navbar {
   backdrop-filter: blur(10px);
 }
+
 .logo {
   font-size: 24px;
   font-weight: bold;
-}
-
-.signin {
-  background: red;
-  border: none;
-  color: white;
-  padding: 8px 15px;
-  cursor: pointer;
 }
 
 /* BACKGROUND VIDEO */
@@ -89,50 +79,57 @@ body {
   margin-top: 20px;
 }
 
-.btn-primary {
-  background: red;
+.btn-primary, .btn-secondary {
   border: none;
   padding: 12px 20px;
   margin-right: 10px;
   cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-primary {
+  background: red;
+  color: white;
+  text-decoration: none;
 }
 
 .btn-secondary {
   background: rgba(255,255,255,0.3);
-  border: none;
-  padding: 12px 20px;
-  cursor: pointer;
+  color: white;
+  text-decoration: none;
 }
-    </style>
+</style>
 </head>
 
 <body>
-  <a href="about.html">Buy</a>
 
-<!-- 🔥 NAVBAR -->
+<!-- NAVBAR -->
 <header class="navbar">
   <h1 class="logo">KIZK</h1>
-  <button class="signin">Sign In</button>
+  <!-- Sign In button removed -->
 </header>
 
-<!-- 🔥 BACKGROUND VIDEO -->
+<!-- BACKGROUND VIDEO -->
 <div class="bg-video">
   <video autoplay muted loop playsinline>
     <source src="your-video.mp4" type="video/mp4">
   </video>
 </div>
 
-<!-- 🔥 OVERLAY -->
+<!-- OVERLAY -->
 <div class="overlay"></div>
 
-<!-- 🔥 HERO SECTION -->
+<!-- HERO SECTION -->
 <section class="hero">
   <h1>Unlimited Shopping, Anytime</h1>
   <p>Premium products. Zero compromise.</p>
 
   <div class="hero-buttons">
-    <button class="btn-primary">Shop Now</button>
-    <button class="btn-secondary">Explore</button>
+    <!-- Shop Now opens about.html -->
+    <a href="about.html" class="btn-primary">Shop Now</a>
+
+    <!-- Explore replaced with Sign In / Log In -->
+    <a href="#" class="btn-secondary">Sign In / Log In</a>
   </div>
 </section>
 
