@@ -7,80 +7,148 @@
 
 <style>
 body {
+  font-family: Arial, sans-serif;
   margin: 0;
-  font-family: Arial;
-  background: white;
+  background: #111;
+  color: white;
+  animation: fadeIn 1s ease-in;
 }
 
-/* light green background */
-body::before {
-  content: "";
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, #d4f8d4 10%, transparent 10%);
-  background-size: 40px 40px;
-  z-index: -1;
-  opacity: 0.4;
-}
-
-/* header */
 header {
-  background: white;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.logo {
-  height: 65px;
-}
-
-/* menu */
-.menu-btn {
-  position: absolute;
-  left: 15px;
-  font-size: 25px;
-  cursor: pointer;
-}
-
-.menu {
-  position: fixed;
-  top: 0;
-  left: -220px;
-  width: 220px;
-  height: 100%;
   background: black;
-  color: white;
+  padding: 15px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.search-box {
+  margin: 20px;
+  text-align: center;
+}
+
+.search-box input {
+  padding: 10px;
+  width: 60%;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
   padding: 20px;
-  transition: 0.3s;
 }
 
-.menu a {
-  display: block;
+/* PRODUCT CARD */
+.product {
+  background: #1c1c1c;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  padding: 10px;
+
+  opacity: 0;
+  transform: translateY(20px);
+  animation: show 0.5s forwards;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* IMAGE FIX */
+.product img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.product:hover img {
+  transform: scale(1.1);
+}
+
+.product h3 {
+  margin: 10px 0 5px;
+}
+
+.product p {
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+/* BUTTON */
+button {
+  padding: 10px 15px;
+  background: white;
+  color: black;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: #ff4d4d;
   color: white;
-  margin: 15px 0;
-  text-decoration: none;
+  transform: scale(1.05);
 }
 
-.menu.active {
-  left: 0;
-}
-
-/* cart */
+/* CART */
 .cart {
   position: fixed;
   top: 15px;
   right: 15px;
   background: black;
-  color: white;
-  padding: 10px 15px;
+  padding: 10px;
+  border-radius: 5px;
+}
+.video-wrapper {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
   border-radius: 10px;
 }
 
-/* bounce animation */
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* smooth entry animation */
+.product {
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  animation: smoothShow 0.6s forwards;
+}
+
+@keyframes smoothShow {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+/* ANIMATIONS */
+@keyframes show {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 @keyframes bounce {
   0% { transform: scale(1); }
   30% { transform: scale(1.3); }
@@ -91,105 +159,15 @@ header {
 .bounce {
   animation: bounce 0.4s;
 }
-
-/* search */
-.search-box {
-  text-align: center;
-  margin: 20px;
-}
-
-.search-box input {
-  width: 70%;
-  padding: 12px;
-  border-radius: 25px;
-  border: 2px solid #00c853;
-  font-size: 16px;
-}
-
-.search-box input:focus {
-  box-shadow: 0 0 10px rgba(0,200,83,0.5);
-  outline: none;
-}
-
-/* products */
-.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-/* product */
-.product {
-  background: black;
-  color: white;
-  border-radius: 15px;
-  overflow: hidden;
-  text-align: center;
-
-  opacity: 0;
-  transform: translateY(20px);
-  animation: show 0.5s forwards;
-}
-
-/* animation */
-@keyframes show {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* hover */
-.product:hover {
-  transform: scale(1.05);
-  transition: 0.3s;
-}
-
-.product img,
-.product video {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-/* text */
-.product h3,
-.product p {
-  margin: 10px;
-}
-
-/* button */
-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  background: white;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-button:hover {
-  background: #ff4d4d;
-  transform: scale(1.1);
-}
 </style>
 </head>
 
 <body>
 
-<div class="menu" id="menu">
-  <a href="#">Home</a>
-  <a href="#">Search</a>
-</div>
-
-<header>
-  <div class="menu-btn" onclick="toggleMenu()">☰</div>
-  <img src="logo.png" class="logo">
-</header>
+<header>KIZK STORE</header>
 
 <div class="cart">
-  🛒 <span id="cart-count">0</span>
+  Cart: <span id="cart-count">0</span>
 </div>
 
 <div class="search-box">
@@ -208,7 +186,7 @@ let products = [
   {
     name: "Watch",
     price: 2999,
-    image: "richard-mille.jpg"
+    image: "richard-mille-rm-50-03-mclaren-f1-watch-and-strap.jpg__1536x0_q75_crop-scale_subsampling-2_upscale-false-removebg-preview.png"
   },
   {
     name: "Headphones",
@@ -225,12 +203,22 @@ function displayProducts(list) {
 
   list.forEach((product, index) => {
 
-    let media = product.video
-      ? `<video autoplay muted loop playsinline src="${product.video}"></video>`
-      : `<img src="${product.image}">`;
+    let media = "";
+
+    if (product.video) {
+      media = `
+        <div class="video-wrapper">
+          <video autoplay muted loop playsinline>
+            <source src="${product.video}" type="video/mp4">
+          </video>
+        </div>
+      `;
+    } else {
+      media = `<img src="${product.image}">`;
+    }
 
     container.innerHTML += `
-      <div class="product" style="animation-delay:${index * 0.1}s">
+      <div class="product" style="animation-delay:${index * 0.15}s">
         ${media}
         <h3>${product.name}</h3>
         <p>₹${product.price}</p>
@@ -242,21 +230,24 @@ function displayProducts(list) {
 
 function addToCart() {
   cart++;
-  let el = document.getElementById("cart-count");
-  el.innerText = cart;
+  let cartElement = document.getElementById("cart-count");
+  cartElement.innerText = cart;
 
-  el.classList.add("bounce");
-  setTimeout(() => el.classList.remove("bounce"), 400);
+  cartElement.classList.add("bounce");
+
+  setTimeout(() => {
+    cartElement.classList.remove("bounce");
+  }, 400);
 }
 
 function searchProduct() {
-  let val = document.getElementById("search").value.toLowerCase();
-  let filtered = products.filter(p => p.name.toLowerCase().includes(val));
-  displayProducts(filtered);
-}
+  let value = document.getElementById("search").value.toLowerCase();
 
-function toggleMenu() {
-  document.getElementById("menu").classList.toggle("active");
+  let filtered = products.filter(p =>
+    p.name.toLowerCase().includes(value)
+  );
+
+  displayProducts(filtered);
 }
 
 displayProducts(products);
