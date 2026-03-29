@@ -282,16 +282,130 @@ button:hover {
 
   KIZK STORE
 </header>
-<div class="cart">
-  🛒
-  <span id="cart-count">0</span>
-<div class="menu-container">
-  <div class="menu-btn" onclick="toggleMenu()">☰</div>
-  <div class="dropdown" id="dropdown">
-    <a href="index.html">Home</a>
-    <a href="index.html">Sign In / Log In</a>
+<!-- CART + LOGIN -->
+<div class="cart-login-container">
+  <div class="cart">
+    🛒 <span id="cart-count">0</span>
+  </div>
+  
+  <div class="menu-container">
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <div class="dropdown" id="dropdown-menu">
+      <a href="index.html">Home</a>
+      <a href="index.html">Sign In / Log In</a>
+    </div>
   </div>
 </div>
+
+<!-- CALL BUTTON -->
+<a href="call.html" class="call-btn">☎️</a>
+
+<style>
+/* CART + LOGIN CONTAINER */
+.cart-login-container {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1000;
+}
+
+/* Cart */
+.cart {
+  background: black;
+  color: white;
+  padding: 8px 12px;  /* thoda chhota */
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  position: relative;
+}
+
+#cart-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: red;
+  color: white;
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 50%;
+}
+
+/* Menu / Login Dropdown */
+.menu-container {
+  position: relative;
+}
+
+.menu-btn {
+  font-size: 22px;
+  cursor: pointer;
+  background: white;
+  padding: 6px 10px;
+  border-radius: 5px;
+}
+
+.dropdown {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  display: none;
+  min-width: 150px;
+}
+
+.dropdown a {
+  display: block;
+  padding: 8px 12px;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.dropdown a:hover {
+  background: #f1f1f1;
+}
+
+.dropdown.active {
+  display: block;
+}
+
+/* Call Button */
+.call-btn {
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+  background: green;
+  color: white;
+  padding: 12px;
+  border-radius: 50%;
+  font-size: 22px;
+  text-decoration: none;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+.call-btn:hover {
+  transform: scale(1.1);
+  background: darkgreen;
+}
+</style>
+
+<script>
+// Toggle dropdown
+function toggleMenu() {
+  document.getElementById("dropdown-menu").classList.toggle("active");
+}
+</script>
 <!-- CALL BUTTON -->
 <a href="call.html" class="call-btn">☎️</a>
 
@@ -312,31 +426,6 @@ button:hover {
   background: #ff4d4d;
   color: white;
   transform: scale(1.05);
-}
-
-/* Call Button */
-.call-btn {
-  position: fixed;
-  bottom: 15px;
-  left: 15px;
-  background: white;
-  color: white;
-  padding: 12px;
-  border-radius: 50%;
-  font-size: 22px;
-  text-decoration: none;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: all 0.3s ease;
-}
-
-.call-btn:hover {
-  transform: scale(1.1);
-  background: darkgreen;
 }
 </style>
 <div class="search-box">
