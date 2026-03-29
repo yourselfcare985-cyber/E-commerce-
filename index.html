@@ -9,11 +9,20 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  background: #111;
+  background: #FFFFFF;
   color: white;
   animation: fadeIn 1s ease-in;
 }
+<header>
+  <div class="menu-container">
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
+    <div class="dropdown" id="dropdown">
+      <a href="#">Home</a>
+      <a href="#">Search</a>
+    </div>
+  </div>
+</header>
 header {
   font-family: Brisk-script, sans-serif;
   background: black;
@@ -35,7 +44,46 @@ header {
   border-radius: 5px;
   border: none;
 }
+/* menu container */
+.menu-container {
+  position: absolute;
+  left: 15px;
+}
 
+/* button */
+.menu-btn {
+  font-size: 25px;
+  cursor: pointer;
+}
+
+/* dropdown */
+.dropdown {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  display: none;
+  min-width: 150px;
+}
+
+/* links */
+.dropdown a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown a:hover {
+  background: #f1f1f1;
+}
+
+/* show */
+.dropdown.active {
+  display: block;
+}
 .products {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -197,7 +245,10 @@ let products = [
 ];
 
 let cart = 0;
-
+  
+function toggleMenu() {
+  document.getElementById("dropdown").classList.toggle("active");
+}
 function displayProducts(list) {
   let container = document.getElementById("product-list");
   container.innerHTML = "";
