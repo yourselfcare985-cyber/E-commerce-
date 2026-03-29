@@ -110,7 +110,32 @@ button:hover {
   padding: 10px;
   border-radius: 5px;
 }
+.video-wrapper {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 10px;
+}
 
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* smooth entry animation */
+.product {
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  animation: smoothShow 0.6s forwards;
+}
+
+@keyframes smoothShow {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
 /* ANIMATIONS */
 @keyframes show {
   to {
@@ -182,16 +207,18 @@ function displayProducts(list) {
 
     if (product.video) {
       media = `
-        <video width="100%" height="200" controls>
-          <source src="${product.video}" type="video/mp4">
-        </video>
+        <div class="video-wrapper">
+          <video autoplay muted loop playsinline>
+            <source src="${product.video}" type="video/mp4">
+          </video>
+        </div>
       `;
     } else {
       media = `<img src="${product.image}">`;
     }
 
     container.innerHTML += `
-      <div class="product" style="animation-delay:${index * 0.1}s">
+      <div class="product" style="animation-delay:${index * 0.15}s">
         ${media}
         <h3>${product.name}</h3>
         <p>₹${product.price}</p>
