@@ -132,6 +132,17 @@ body {
     <a href="#" class="btn-secondary">Sign In / Log In</a>
   </div>
 </section>
+  
+<script>
+  // Select the Sign In / Log In button
+  const loginBtn = document.querySelector('.btn-secondary');
 
+  // Add click event to redirect to shop.html
+  loginBtn.addEventListener('click', function(event) {
+    event.preventDefault(); // Default link behavior rokta hai
+    window.location.href = 'shop.html'; // Redirect
+  });
+</script>
+  
 </body>
 </html>
