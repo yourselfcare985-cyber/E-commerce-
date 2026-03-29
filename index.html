@@ -6,6 +6,16 @@
 <title>KIZK STORE</title>
 
 <style>
+  body::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #d4f8d4 10%, transparent 10%);
+  background-size: 40px 40px;
+  z-index: -1;
+  opacity: 0.4;
+  }
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -13,16 +23,6 @@ body {
   color: white;
   animation: fadeIn 1s ease-in;
 }
-<header>
-  <div class="menu-container">
-    <div class="menu-btn" onclick="toggleMenu()">☰</div>
-
-    <div class="dropdown" id="dropdown">
-      <a href="#">Home</a>
-      <a href="#">Search</a>
-    </div>
-  </div>
-</header>
 header {
   font-family: Brisk-script, sans-serif;
   background: black;
@@ -64,7 +64,13 @@ header {
   font-size: 25px;
   cursor: pointer;
 }
-
+.menu-btn {
+  position: absolute;
+  left: 15px;
+  font-size: 25px;
+  cursor: pointer;
+  z-index: 1000;  /* 🔥 IMPORTANT */
+}
 /* dropdown */
 .dropdown {
   position: absolute;
@@ -221,7 +227,18 @@ button:hover {
 </head>
 
 <body>
+<header>
+  <div class="menu-container">
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
+    <div class="dropdown" id="dropdown">
+      <a href="#">Home</a>
+      <a href="#">Search</a>
+    </div>
+  </div>
+
+  KIZK STORE
+</header>
 <header>KIZK STORE</header>
 
 <div class="cart">
@@ -244,7 +261,7 @@ let products = [
   {
     name: "Watch",
     price: 2999,
-    image: "VID-20260329-WA0009.mp4"
+    video: "VID-20260329-WA0009.mp4"
   },
   {
     name: "Headphones",
