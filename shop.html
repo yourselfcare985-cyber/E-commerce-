@@ -1,1 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pink-Purple Layout</title>
+<!-- Fancy font -->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Pacifico', cursive;
+  }
 
+  /* Background gradient with subtle pattern */
+  body {
+    background: linear-gradient(135deg, #ff9ccf, #a18cd1);
+    background-size: 50px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    max-width: 1200px;
+    gap: 50px;
+  }
+
+  .left img {
+    max-width: 300px;
+    height: auto;
+    border-radius: 15px;
+  }
+
+  .right {
+    color: white;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      gap: 30px;
+    }
+    .right {
+      text-align: center;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <img src="https://via.placeholder.com/300x300.png?text=Your+Image" alt="Center Image">
+    </div>
+    <div class="right">
+      Ye kyun daba diya??
+      Wapas jaa kar Shop now daba🥺
+    </div>
+  </div>
+</body>
+</html>
