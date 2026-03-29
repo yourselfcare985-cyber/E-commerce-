@@ -372,14 +372,6 @@ let cart = 0;
 function toggleMenu(id) {
   document.getElementById(id).classList.toggle("active");
 }
-  // Cart icon ko select karo
-  const cart = document.querySelector('.cart');
-
-  // Click event add karo
-  cart.addEventListener('click', () => {
-    // paisa.html open karo
-    window.location.href = "paisa.html";
-  });
 function displayProducts(list) {
   let container = document.getElementById("product-list");
   container.innerHTML = "";
@@ -435,6 +427,15 @@ function searchProduct() {
 
 displayProducts(products);
 </script>
+<script>
+  // Cart icon ko select karo
+  const cart = document.querySelector('.cart');
 
+  // Click event add karo
+  cart.addEventListener('click', () => {
+    // paisa.html open karo
+    window.location.href = "paisa.html";
+  });
+</script>
 </body>
 </html>
