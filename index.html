@@ -7,16 +7,19 @@
 
 <style>
 body {
-  font-family: Quadrat;
+  font-family: Arial, sans-serif;
   margin: 0;
-  background: #0;
+  background: #111;
+  color: white;
+  animation: fadeIn 1s ease-in;
 }
 
 header {
   background: black;
-  color: white;
   padding: 15px;
   text-align: center;
+  font-size: 22px;
+  font-weight: bold;
 }
 
 .search-box {
@@ -28,78 +31,43 @@ header {
   padding: 10px;
   width: 60%;
   font-size: 16px;
+  border-radius: 5px;
+  border: none;
 }
 
 .products {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
   padding: 20px;
 }
 
+/* PRODUCT CARD */
 .product {
-  background: black;
-  padding: 15px;
+  background: #1c1c1c;
   border-radius: 10px;
+  overflow: hidden;
   text-align: center;
-}
-.product {
+  padding: 10px;
+
   opacity: 0;
   transform: translateY(20px);
   animation: show 0.5s forwards;
-}
 
-@keyframes show {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-.product {
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-}
-
-.product img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-button {
-  padding: 50px;
-  background: white;
-  color: black;
-  border: none;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #333;
-}
-
-.cart {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  background: black;
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-}
-  
-  /* Product hover zoom */
-.product {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .product:hover {
   transform: scale(1.05);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
 }
 
-/* Image zoom inside card */
+/* IMAGE FIX */
 .product img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
   transition: transform 0.3s ease;
 }
 
@@ -107,31 +75,55 @@ button:hover {
   transform: scale(1.1);
 }
 
-/* Button animation */
+.product h3 {
+  margin: 10px 0 5px;
+}
+
+.product p {
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+/* BUTTON */
 button {
+  padding: 10px 15px;
+  background: white;
+  color: black;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
   transition: all 0.3s ease;
 }
 
 button:hover {
   background: #ff4d4d;
-  transform: scale(1.1);
+  color: white;
+  transform: scale(1.05);
 }
 
-/* Page load fade-in */
-body {
-  animation: fadeIn 1s ease-in;
+/* CART */
+.cart {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: black;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* ANIMATIONS */
+@keyframes show {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-/* Cart bounce animation */
 @keyframes bounce {
   0% { transform: scale(1); }
   30% { transform: scale(1.3); }
@@ -147,9 +139,7 @@ body {
 
 <body>
 
-<header>
-  <h1>KIZK STORE</h1>
-</header>
+<header>KIZK STORE</header>
 
 <div class="cart">
   Cart: <span id="cart-count">0</span>
@@ -166,17 +156,17 @@ let products = [
   {
     name: "Shoes",
     price: 999,
-    image: "Screenshot_20260329-103424-removebg-preview.png"
+    image: "https://via.placeholder.com/300"
   },
   {
     name: "Watch",
     price: 2999,
-    image: "richard-mille-rm-50-03-mclaren-f1-watch-and-strap.jpg__1536x0_q75_crop-scale_subsampling-2_upscale-false-removebg-preview.png"
+    image: "https://via.placeholder.com/300"
   },
   {
     name: "Headphones",
     price: 1499,
-    image: "Screenshot_20260329-104346-removebg-preview.png"
+    image: "https://via.placeholder.com/300"
   }
 ];
 
@@ -186,9 +176,9 @@ function displayProducts(list) {
   let container = document.getElementById("product-list");
   container.innerHTML = "";
 
-  list.forEach(product => {
+  list.forEach((product, index) => {
     container.innerHTML += `
-      <div class="product">
+      <div class="product" style="animation-delay:${index * 0.1}s">
         <img src="${product.image}">
         <h3>${product.name}</h3>
         <p>₹${product.price}</p>
@@ -203,7 +193,6 @@ function addToCart() {
   let cartElement = document.getElementById("cart-count");
   cartElement.innerText = cart;
 
-  // animation trigger
   cartElement.classList.add("bounce");
 
   setTimeout(() => {
@@ -213,7 +202,7 @@ function addToCart() {
 
 function searchProduct() {
   let value = document.getElementById("search").value.toLowerCase();
-  
+
   let filtered = products.filter(p =>
     p.name.toLowerCase().includes(value)
   );
@@ -223,33 +212,6 @@ function searchProduct() {
 
 displayProducts(products);
 </script>
-  
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-const firebaseConfig = {
-  apiKey: "YOUR_KEY",
-  authDomain: "YOUR_DOMAIN",
-  projectId: "YOUR_ID",
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-async function loadProducts() {
-  const querySnapshot = await getDocs(collection(db, "products"));
-  let products = [];
-
-  querySnapshot.forEach((doc) => {
-    products.push(doc.data());
-  });
-
-  displayProducts(products);
-}
-
-loadProducts();
-</script>
-  
 </body>
 </html>
