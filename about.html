@@ -203,6 +203,10 @@ button:hover {
   </video>
   </div>
 <header>
+  <!-- Abhi tumhare code me kuch bhi aisa nahi hai: -->
+<div class="cart-login-container">
+  <div class="cart">🛒 <span id="cart-count">0</span></div>
+</div>
  <div class="menu-container">
   <div class="menu-btn" onclick="toggleMenu('main-menu')">☰</div>
   <div class="dropdown" id="main-menu">
@@ -253,7 +257,7 @@ button:hover {
 /* menu container */
 .menu-container {
   position: absolute;
-  left: 15px;
+  right: 15px;
 }
 
 /* button */
@@ -263,7 +267,7 @@ button:hover {
 }
 .menu-btn {
   position: absolute;
-  left: 15px;
+  right: 15px;
   font-size: 25px;
   cursor: pointer;
   z-index: 1000;  /* 🔥 IMPORTANT */
@@ -300,8 +304,8 @@ button:hover {
   position: fixed;
   bottom: 15px;
   left: 15px;
-  background: green;
-  color: white;
+  background: white;
+  color: black;
   padding: 12px;
   border-radius: 50%;
   font-size: 22px;
