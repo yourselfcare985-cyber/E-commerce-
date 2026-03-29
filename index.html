@@ -8,11 +8,11 @@
 <style>
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: Arial;
   background: white;
 }
 
-/* light green background design */
+/* light green pattern */
 body::before {
   content: "";
   position: fixed;
@@ -27,19 +27,18 @@ body::before {
 /* header */
 header {
   background: white;
-  padding: 15px;
+  padding: 10px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   position: relative;
 }
 
-/* logo */
 .logo {
-  height: 40px;
+  height: 65px;
 }
 
-/* hamburger */
+/* menu button */
 .menu-btn {
   position: absolute;
   left: 15px;
@@ -47,12 +46,12 @@ header {
   cursor: pointer;
 }
 
-/* dropdown menu */
+/* sidebar */
 .menu {
   position: fixed;
   top: 0;
-  left: -200px;
-  width: 200px;
+  left: -220px;
+  width: 220px;
   height: 100%;
   background: black;
   color: white;
@@ -67,165 +66,94 @@ header {
   text-decoration: none;
 }
 
-/* open menu */
 .menu.active {
   left: 0;
 }
 
-/* cart icon */
+/* cart */
 .cart {
   position: fixed;
   top: 15px;
   right: 15px;
-  font-size: 20px;
   background: black;
   color: white;
-  padding: 10px;
+  padding: 10px 15px;
   border-radius: 10px;
+  font-size: 18px;
+}
+
+/* search */
+.search-box {
+  text-align: center;
+  margin: 20px;
+}
+
+.search-box input {
+  width: 70%;
+  padding: 12px;
+  border-radius: 25px;
+  border: 2px solid #00c853;
+  font-size: 16px;
+}
+
+.search-box input:focus {
+  box-shadow: 0 0 10px rgba(0,200,83,0.5);
+  outline: none;
 }
 
 /* products */
 .products {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
   gap: 20px;
   padding: 20px;
 }
 
-/* product card */
+/* card */
 .product {
   background: black;
   color: white;
-  border-radius: 10px;
-  padding: 15px;
+  border-radius: 15px;
+  overflow: hidden;
   text-align: center;
 }
 
 /* media */
 .product img,
-.video-wrapper video {
+.product video {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 10px;
-}
-.search-box {
-  margin: 20px;
-  text-align: center;
 }
 
-.search-box input {
-  padding: 10px;
-  width: 60%;
-  font-size: 16px;
-  border-radius: 5px;
-  border: none;
-}
-
-.product:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-}
-
-/* IMAGE FIX */
-.product img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-  transition: transform 0.3s ease;
-}
-
-.product:hover img {
-  transform: scale(1.1);
-}
-
-.product h3 {
-  margin: 10px 0 5px;
-}
-
+/* text spacing */
+.product h3,
 .product p {
-  margin: 5px 0;
-  font-weight: bold;
+  margin: 10px;
 }
 
-/* BUTTON */
+/* button */
 button {
-  padding: 10px 15px;
-  background: white;
-  color: black;
+  margin-bottom: 15px;
+  padding: 10px 20px;
   border: none;
+  border-radius: 8px;
+  background: white;
   cursor: pointer;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  background: #ff4d4d;
-  color: white;
-  transform: scale(1.05);
-}
-
-.video-wrapper {
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-.video-wrapper video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* smooth entry animation */
-.product {
-  opacity: 0;
-  transform: translateY(30px) scale(0.95);
-  animation: smoothShow 0.6s forwards;
-}
-
-@keyframes smoothShow {
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-/* ANIMATIONS */
-@keyframes show {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes bounce {
-  0% { transform: scale(1); }
-  30% { transform: scale(1.3); }
-  60% { transform: scale(0.9); }
-  100% { transform: scale(1); }
-}
-
-.bounce {
-  animation: bounce 0.4s;
 }
 </style>
 </head>
 
 <body>
+
 <div class="menu" id="menu">
   <a href="#">Home</a>
   <a href="#">Search</a>
 </div>
+
 <header>
   <div class="menu-btn" onclick="toggleMenu()">☰</div>
-  <img src="file_00000000e5b87208acd0722b95e9fd3d-removebg-preview.png"class="logo">
+  <img src="logo.png" class="logo">
 </header>
 
 <div class="cart">
@@ -248,12 +176,7 @@ let products = [
   {
     name: "Watch",
     price: 2999,
-    image: "richard-mille-rm-50-03-mclaren-f1-watch-and-strap.jpg__1536x0_q75_crop-scale_subsampling-2_upscale-false-removebg-preview.png"
-  },
-  {
-    name: "Headphones",
-    price: 1499,
-    image: "Screenshot_20260329-104346-removebg-preview.png"
+    image: "richard-mille.jpg"
   }
 ];
 
@@ -263,24 +186,14 @@ function displayProducts(list) {
   let container = document.getElementById("product-list");
   container.innerHTML = "";
 
-  list.forEach((product, index) => {
+  list.forEach(product => {
 
-    let media = "";
-
-    if (product.video) {
-      media = `
-        <div class="video-wrapper">
-          <video autoplay muted loop playsinline>
-            <source src="${product.video}" type="video/mp4">
-          </video>
-        </div>
-      `;
-    } else {
-      media = `<img src="${product.image}">`;
-    }
+    let media = product.video
+      ? `<video autoplay muted loop playsinline src="${product.video}"></video>`
+      : `<img src="${product.image}">`;
 
     container.innerHTML += `
-      <div class="product" style="animation-delay:${index * 0.15}s">
+      <div class="product">
         ${media}
         <h3>${product.name}</h3>
         <p>₹${product.price}</p>
@@ -292,30 +205,20 @@ function displayProducts(list) {
 
 function addToCart() {
   cart++;
-  let cartElement = document.getElementById("cart-count");
-  cartElement.innerText = cart;
-
-  cartElement.classList.add("bounce");
-
-  setTimeout(() => {
-    cartElement.classList.remove("bounce");
-  }, 400);
+  document.getElementById("cart-count").innerText = cart;
 }
 
 function searchProduct() {
-  let value = document.getElementById("search").value.toLowerCase();
-
-  let filtered = products.filter(p =>
-    p.name.toLowerCase().includes(value)
-  );
-
+  let val = document.getElementById("search").value.toLowerCase();
+  let filtered = products.filter(p => p.name.toLowerCase().includes(val));
   displayProducts(filtered);
 }
 
-displayProducts(products);
-  function toggleMenu() {
+function toggleMenu() {
   document.getElementById("menu").classList.toggle("active");
 }
+
+displayProducts(products);
 </script>
 
 </body>
