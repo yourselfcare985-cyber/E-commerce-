@@ -7,21 +7,108 @@
 
 <style>
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  background: #111;
-  color: white;
-  animation: fadeIn 1s ease-in;
+  font-family: Arial, sans-serif;
+  background: white;
 }
 
+/* light green background design */
+body::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #d4f8d4 10%, transparent 10%);
+  background-size: 40px 40px;
+  z-index: -1;
+  opacity: 0.4;
+}
+
+/* header */
 header {
+  background: white;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* logo */
+.logo {
+  height: 40px;
+}
+
+/* hamburger */
+.menu-btn {
+  position: absolute;
+  left: 15px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+/* dropdown menu */
+.menu {
+  position: fixed;
+  top: 0;
+  left: -200px;
+  width: 200px;
+  height: 100%;
   background: black;
+  color: white;
+  padding: 20px;
+  transition: 0.3s;
+}
+
+.menu a {
+  display: block;
+  color: white;
+  margin: 15px 0;
+  text-decoration: none;
+}
+
+/* open menu */
+.menu.active {
+  left: 0;
+}
+
+/* cart icon */
+.cart {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  font-size: 20px;
+  background: black;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* products */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* product card */
+.product {
+  background: black;
+  color: white;
+  border-radius: 10px;
   padding: 15px;
   text-align: center;
-  font-size: 22px;
-  font-weight: bold;
 }
 
+/* media */
+.product img,
+.video-wrapper video {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
 .search-box {
   margin: 20px;
   text-align: center;
@@ -33,28 +120,6 @@ header {
   font-size: 16px;
   border-radius: 5px;
   border: none;
-}
-
-.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-/* PRODUCT CARD */
-.product {
-  background: #1c1c1c;
-  border-radius: 10px;
-  overflow: hidden;
-  text-align: center;
-  padding: 10px;
-
-  opacity: 0;
-  transform: translateY(20px);
-  animation: show 0.5s forwards;
-
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .product:hover {
@@ -101,15 +166,6 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* CART */
-.cart {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  background: black;
-  padding: 10px;
-  border-radius: 5px;
-}
 .video-wrapper {
   width: 100%;
   height: 200px;
@@ -164,7 +220,10 @@ button:hover {
 
 <body>
 
-<header>KIZK STORE</header>
+<header>
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  <img src="logo.png" class="logo">
+</header>
 
 <div class="cart">
   Cart: <span id="cart-count">0</span>
