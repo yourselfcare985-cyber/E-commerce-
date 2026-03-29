@@ -78,24 +78,7 @@ header {
   border: 2px solid black;
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
 }
-/* menu container */
-.menu-container {
-  position: absolute;
-  left: 15px;
-}
 
-/* button */
-.menu-btn {
-  font-size: 25px;
-  cursor: pointer;
-}
-.menu-btn {
-  position: absolute;
-  left: 15px;
-  font-size: 25px;
-  cursor: pointer;
-  z-index: 1000;  /* 🔥 IMPORTANT */
-}
 .products {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -281,7 +264,24 @@ button:hover {
   padding: 2px 5px;
   border-radius: 50%;
 }
+/* menu container */
+.menu-container {
+  position: absolute;
+  left: 15px;
+}
 
+/* button */
+.menu-btn {
+  font-size: 25px;
+  cursor: pointer;
+}
+.menu-btn {
+  position: absolute;
+  left: 15px;
+  font-size: 25px;
+  cursor: pointer;
+  z-index: 1000;  /* 🔥 IMPORTANT */
+}
 .dropdown {
   position: absolute;
   top: 35px;
