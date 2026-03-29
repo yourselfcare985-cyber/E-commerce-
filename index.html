@@ -176,17 +176,17 @@ button:hover {
 }
 .video-wrapper {
   width: 100%;
-  height: 200px;
-  overflow: hidden;
+  aspect-ratio: 1 / 1;   /* 🔥 FIXED RATIO */
+  overflow: hidden;      /* 🔥 IMPORTANT */
   border-radius: 10px;
 }
 
 .video-wrapper video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover;     /* 🔥 KEEP INSIDE */
+  display: block;
 }
-
 /* smooth entry animation */
 .product {
   opacity: 0;
