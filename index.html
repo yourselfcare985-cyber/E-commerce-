@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KIZK STORE</title>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
   body::before {
   content: "";
@@ -164,7 +164,24 @@ button:hover {
   color: white;
   transform: scale(1.05);
 }
+.cart {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+}
 
+#cart-count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  padding: 3px 7px;
+  border-radius: 50%;
+}
 /* CART */
 .cart {
   position: fixed;
@@ -239,7 +256,10 @@ button:hover {
 
   KIZK STORE
 </header>
-
+<div class="cart">
+  <i class="fa-solid fa-cart-shopping"></i>
+  <span id="cart-count">0</span>
+</div>
 <div class="cart">
   Cart: <span id="cart-count">0</span>
 </div>
