@@ -6,6 +6,104 @@
 <title>KIZK</title>
 
 <link rel="stylesheet" href="style.css">
+  /* RESET */
+  <style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  z-index: 10;
+}
+.navbar {
+  backdrop-filter: blur(10px);
+}
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.signin {
+  background: red;
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+/* BACKGROUND VIDEO */
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+}
+
+.bg-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* DARK OVERLAY */
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: -1;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 50px;
+}
+
+.hero h1 {
+  font-size: 50px;
+  max-width: 600px;
+}
+
+.hero p {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+/* BUTTONS */
+.hero-buttons {
+  margin-top: 20px;
+}
+
+.btn-primary {
+  background: red;
+  border: none;
+  padding: 12px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.3);
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+}
+    </style>
 </head>
 
 <body>
