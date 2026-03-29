@@ -1,1 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animated Grey Dialogue</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Pacifico', cursive;
+    background: #d0d0d0; /* grey background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
 
+  /* Subtle dotted background */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(#aaaaaa 1px, transparent 1px);
+    background-size: 25px 25px;
+    z-index: -1;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: 1000px;
+    width: 90%;
+  }
+
+  /* Image animation */
+  .left img {
+    max-width: 250px;
+    border-radius: 10px;
+    opacity: 0;
+    transform: translateX(-50px) scale(0.8);
+    animation: imageIntro 1s forwards;
+  }
+
+  @keyframes imageIntro {
+    0% { opacity: 0; transform: translateX(-50px) scale(0.8); }
+    100% { opacity: 1; transform: translateX(0) scale(1); }
+  }
+
+  /* Dialogue bubble animation */
+  .right {
+    background: #555555; /* dark grey */
+    color: white;
+    padding: 20px 25px;
+    border-radius: 20px;
+    font-size: 2rem;
+    max-width: 500px;
+    box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
+    opacity: 0;
+    transform: translateX(50px) scale(0.8);
+    animation: textIntro 1s forwards 0.5s; /* delay after image */
+  }
+
+  @keyframes textIntro {
+    0% { opacity: 0; transform: translateX(50px) scale(0.8); }
+    100% { opacity: 1; transform: translateX(0) scale(1); }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      gap: 20px;
+    }
+    .right {
+      text-align: center;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="left">
+    <img src="IMG-20260329-WA0016-removebg-preview.png" alt="Ladka Image">
+  </div>
+  <div class="right">
+    Paise hain tere paas??
+  </div>
+</div>
+
+</body>
+</html>
