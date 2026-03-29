@@ -6,6 +6,31 @@
 <title>KIZK STORE</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
+  .bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* 🔥 sabke peeche */
+  overflow: hidden;
+}
+
+.bg-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 🔥 full screen cover */
+}
+  body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4); /* dark overlay */
+  z-index: -1;
+  }
   body::before {
   content: "";
   position: fixed;
@@ -244,6 +269,11 @@ button:hover {
 </head>
 
 <body>
+  <div class="bg-video">
+  <video autoplay muted loop playsinline>
+    <source src="45608422d541cb179a39849c18c75491_720w.mp4" type="video/mp4">
+  </video>
+  </div>
 <header>
   <div class="menu-container">
     <div class="menu-btn" onclick="toggleMenu()">☰</div>
