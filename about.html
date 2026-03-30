@@ -205,8 +205,9 @@ button:hover {
 <header>
   <!-- Abhi tumhare code me kuch bhi aisa nahi hai: -->
 <div class="cart-login-container">
-  <div class="cart">🛒 <span id="cart-count">0</span></div>
-</div>
+  <div class="cart" onclick="window.location.href='paisa.html'">
+  🛒 <span id="cart-count">0</span>
+  </div>
  <div class="menu-container">
   <div class="menu-btn" onclick="toggleMenu('main-menu')">☰</div>
   <div class="dropdown" id="main-menu">
@@ -347,8 +348,7 @@ button:hover {
 </div>
 
 <div class="products" id="product-list"></div>
-
-  <a href="/paisa.html" class="cart">🛒</a>
+  
 <script>
 let products = [
   {
